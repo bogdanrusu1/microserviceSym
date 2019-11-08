@@ -17,4 +17,8 @@ class homeController
     public function contact(){
         return new Response("section contact");
     }
+
+    public function byme(){
+        return new Response("Vive moi!");
+    }
 }
