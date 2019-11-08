@@ -13,4 +13,8 @@ class homeController
         // envoie d'une réponse http
         return new Response("Hello World!");
     }
+
+    public function contact(){
+        return new Response("section contact");
+    }
 }
