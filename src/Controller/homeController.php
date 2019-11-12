@@ -4,12 +4,17 @@
 namespace App\Controller;
 
 // on va donner le chemin pour envoyer en http une réponse au navigateur
+
 use Symfony\Component\HttpFoundation\Response;
 
 // on charge le module d'annotations
 use Symfony\Component\Routing\Annotation\Route;
 
-class homeController
+// On prend le contrôleur abstrait de Symfony qui contient de multiples outils préconstruit, dont Twig dans notre cas
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+// on étend notre contrôleur par le contrôleur abstrait de Symfony, ce qui charge des bibliothèques dont Twig
+class homeController extends AbstractController
 {
     // méthode appelée à l'accueil
     /**
@@ -22,29 +27,12 @@ class homeController
     }
 
     /**
-     * @Route("/contact", name="Contact")
+     * @Route("/news/{slug}")
      */
-    public function contacts(){
-        return new Response("section contact");
-    }
-
-    /**
-     * @Route("/produits", name="Product")
-     */
-    public function produit(){
-        return new Response("Voici la liste de nos produits");
-    }
-    /**
-     * route avec chemin vers le détail d'un produit avec passage de la variable get id {id} et $id dans la méthodes,
-     *
-     * name -> nom de la route
-     * requirements -> la variable id doit être un numérique (regex \d+)
-     * defaults -> id vaut 1 si on n'affiche rien après /produits/item/
-     *
-     * @Route("/produits/item/{id}", name="detailProduct", requirements={"id"="\d+"}, defaults={"id"=1})
-     *
-     */
-    public function detailProduit($id){
-        return new Response("Produit dont l'id est $id");
+    public function show($slug){
+        // utilisation de twig (déjà chargé via AbstractController)
+        return $this->render("base.html.twig",
+                ["titre"=>"Titre : $slug",
+                "h1"=>"<h1>Titre : $slug</h1>"]);
     }
 }
