@@ -14,6 +14,7 @@ class homeController
     // méthode appelée à l'accueil
     /**
      * @Route("/", name="homepage")
+     *
      */
     public function homepage(){
         // envoie d'une réponse http
@@ -23,7 +24,7 @@ class homeController
     /**
      * @Route("/contact", name="Contact")
      */
-    public function contact(){
+    public function contacts(){
         return new Response("section contact");
     }
 
