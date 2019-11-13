@@ -30,9 +30,12 @@ class homeController extends AbstractController
      * @Route("/news/{slug}")
      */
     public function show($slug){
+        // dump dans la barre de profiler
+        dump($slug,$_SERVER);
         // utilisation de twig (déjà chargé via AbstractController)
         return $this->render("base.html.twig",
                 ["titre"=>"Titre : $slug",
                 "h1"=>"<h1>Titre : $slug</h1>"]);
+
     }
 }
