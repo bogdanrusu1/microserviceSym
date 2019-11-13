@@ -22,8 +22,7 @@ class homeController extends AbstractController
      *
      */
     public function homepage(){
-        // envoie d'une réponse http
-        return new Response("Hello World!");
+        return $this->render("base.html.twig");
     }
 
     /**
